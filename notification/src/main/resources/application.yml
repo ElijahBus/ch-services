@@ -1,0 +1,6 @@
+spring:
+  config:
+    import: private.yml
+
+server:
+  port: 8001

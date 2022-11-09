@@ -1,0 +1,6 @@
+# Twilio credentials
+
+comfihealth.twilio.account-sid=
+comfihealth.twilio.auth-token=
+comfihealth.twilio.sender-phone-number=
+
