@@ -1,6 +1,28 @@
+server:
+  port: 8001
+
 spring:
   config:
     import: private.yml
+  datasource:
+    password: root
+    url: jdbc:postgresql://localhost:5432/ch_notification_service
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+  rabbitmq:
+    addresses: localhost:5672
 
-server:
-  port: 8001
+rabbitmq:
+  exchanges:
+    sms: sms-exchange
+  queues:
+    sms: sms.queue
+  routing-keys:
+    sms-notification: sms.notification.routing-key

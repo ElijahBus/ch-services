@@ -2,6 +2,7 @@ package com.comfihealth.security.authentication.utils;
 
 import org.springframework.stereotype.Component;
 
+import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -20,6 +21,17 @@ public class TokenGenerator {
      * @return String the verification code
      */
     public String generateSignUpToken() {
-        return UUID.randomUUID().toString();
+        return generateNumbersToken(6);
+    }
+
+    public String generateNumbersToken(int length) {
+        String token = "";
+
+        for (int i = 0; i < length; i++) {
+            var randomNumber = new Random().nextInt(0, 9);
+            token = token.concat(Integer.toString(randomNumber));
+        }
+
+        return token;
     }
 }

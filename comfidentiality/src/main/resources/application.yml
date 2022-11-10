@@ -21,14 +21,22 @@ spring:
     username: root
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
     show-sql: true
+  rabbitmq:
+    addresses: localhost:5672
 
 comfihealth:
   oauth2:
     issuer:
       uri: http://auth-server:8000
+
+rabbitmq:
+  exchanges:
+    sms: sms-exchange
+  routing-keys:
+    sms-notification: sms.notification.routing-key

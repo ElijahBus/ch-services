@@ -1,5 +1,6 @@
 package com.comfihealth.notification.sms;
 
+import com.comfihealth.notification.sms.rabbitmq.ConfirmationTokenNotification;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,9 +17,9 @@ public class Controller {
     }
 
     @PostMapping("/send-sms")
-    public String send(@RequestBody SmsNotificationRequest request) {
+    public String send(@RequestBody ConfirmationTokenNotification request) {
 
-        var response = smsNotificationService.sendSms(request.receiver(), request.message());
+        var response = smsNotificationService.sendSms(request);
 
         return "Notification successfully sent";
     }

@@ -5,7 +5,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
-@SpringBootApplication
+@SpringBootApplication(
+        scanBasePackages = {
+                "com.comfihealth.notification",
+                "com.comfihealth.amqp"
+        }
+)
 @EnableConfigurationProperties(ConfigProperties.class)
 public class NotificationApplication {
     public static void main(String[] args) {
