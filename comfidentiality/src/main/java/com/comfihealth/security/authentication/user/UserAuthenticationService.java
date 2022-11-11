@@ -3,6 +3,7 @@ package com.comfihealth.security.authentication.user;
 import com.comfihealth.amqp.RabbitMQMessageProducer;
 import com.comfihealth.security.authentication.registration.token.ConfirmationToken;
 import com.comfihealth.security.authentication.registration.token.ConfirmationTokenNotification;
+import com.comfihealth.security.authentication.registration.token.ConfirmationTokenRequest;
 import com.comfihealth.security.authentication.registration.token.ConfirmationTokenService;
 import com.comfihealth.security.authentication.utils.TokenGenerator;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,8 @@ import java.time.LocalDateTime;
 @Service
 @RequiredArgsConstructor
 public class UserAuthenticationService {
+
+    public static final int TOKEN_LIFETIME_MINUTES = 15;
 
     @Value("${rabbitmq.exchanges.sms}")
     private String smsNotificationExchange;
@@ -60,9 +63,10 @@ public class UserAuthenticationService {
     private void saveConfirmationToken(User user, String token) {
         var confirmationToken = new ConfirmationToken(
                 token,
+                user.getUsername(),
+                user,
                 LocalDateTime.now(),
-                LocalDateTime.now(),
-                user
+                LocalDateTime.now().plusMinutes(TOKEN_LIFETIME_MINUTES)
         );
 
         confirmationTokenService.saveToken(confirmationToken);
@@ -76,4 +80,16 @@ public class UserAuthenticationService {
         );
     }
 
+    public void validateUserRegistration(ConfirmationTokenRequest request) {
+        var isValidToken = confirmationTokenService.isValidToken(request);
+
+        if (!isValidToken) {
+            throw new IllegalStateException("The provided token is invalid");
+        }
+
+        userRepository.enableUser(request.username());
+        userRepository.setUserPhoneNumberVerified(request.username(), LocalDateTime.now());
+
+        confirmationTokenService.confirmToken(request);
+    }
 }

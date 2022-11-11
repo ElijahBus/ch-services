@@ -1,5 +1,6 @@
 package com.comfihealth.security.authentication.registration.user;
 
+import com.comfihealth.security.authentication.registration.token.ConfirmationTokenRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,7 @@ import javax.validation.Valid;
 public class UserRegistrationController {
 
     private final UserRegistrationService userRegistrationService;
+
 
     @GetMapping("status")
     public String status() {
@@ -27,12 +29,10 @@ public class UserRegistrationController {
         return response;
     }
 
-    @PostMapping("/token/confirm")
-    public String confirmRegistrationToken(@RequestParam("token") String token) {
-        var response = userRegistrationService.confirmToken(token);
+    @PostMapping("/confirm-token")
+    public String confirmRegistrationToken(@RequestBody ConfirmationTokenRequest request) {
+        userRegistrationService.confirmToken(request);
 
-        return "";
+        return "Token confirmed";
     }
-
-
 }

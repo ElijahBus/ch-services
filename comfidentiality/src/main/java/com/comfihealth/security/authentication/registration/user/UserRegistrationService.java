@@ -1,5 +1,6 @@
 package com.comfihealth.security.authentication.registration.user;
 
+import com.comfihealth.security.authentication.registration.token.ConfirmationTokenRequest;
 import com.comfihealth.security.authentication.user.User;
 import com.comfihealth.security.authentication.user.UserAuthenticationService;
 import lombok.RequiredArgsConstructor;
@@ -20,10 +21,6 @@ public class UserRegistrationService {
         return userToken;
     }
 
-    public String confirmToken(String token) {
-        return "";
-    }
-
     private String getRegistrationToken(UserRegistrationRequest request) {
 
         return userAuthenticationService.signUp(new User(
@@ -38,5 +35,9 @@ public class UserRegistrationService {
                 request.getCity(),
                 request.getAddress()
         ));
+    }
+
+    public void confirmToken(ConfirmationTokenRequest request) {
+        userAuthenticationService.validateUserRegistration(request);
     }
 }
