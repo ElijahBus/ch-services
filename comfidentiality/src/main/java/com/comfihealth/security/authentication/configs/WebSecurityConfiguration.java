@@ -16,13 +16,16 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class WebSecurityConfiguration {
 
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        return http.formLogin()
-//                .and().authorizeRequests().anyRequest().authenticated()
-//                .and().build();
-//    }
-//    TODO: Bring back the security config after  user registration process is complete
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        return http
+                .csrf().disable()
+                .authorizeRequests()
+                .mvcMatchers("/api/v*/registration/**").permitAll()
+                .anyRequest().authenticated()
+                .and().formLogin()
+                .and().build();
+    }
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {

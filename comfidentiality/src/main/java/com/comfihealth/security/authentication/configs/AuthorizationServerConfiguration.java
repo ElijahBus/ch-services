@@ -13,6 +13,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.core.oidc.OidcScopes;
@@ -36,6 +37,8 @@ public class AuthorizationServerConfiguration {
     private String oauthIssuerURI;
 
     private final JWKManager jwkManager;
+
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Bean
     @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -69,10 +72,11 @@ public class AuthorizationServerConfiguration {
 
     @Bean
     public RegisteredClientRepository registeredClientRepository() {
+        var clientEncodedSecret = bCryptPasswordEncoder.encode("cp-client-secret");
 
         RegisteredClient client = RegisteredClient.withId(UUID.randomUUID().toString())
                 .clientId("client")
-                .clientSecret("cp-client-secret")
+                .clientSecret(clientEncodedSecret)
                 .redirectUris(uris -> uris.addAll(
                         List.of("http://dev.local/authorized", "http://dev.local")
                 ))
@@ -82,7 +86,7 @@ public class AuthorizationServerConfiguration {
                                 AuthorizationGrantType.REFRESH_TOKEN
                         )
                 ))
-                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
                 .scopes(scopes -> scopes.addAll(
                         List.of(OidcScopes.OPENID,
                                 OidcScopes.PROFILE
