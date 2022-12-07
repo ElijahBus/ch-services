@@ -28,9 +28,8 @@ public class SmsNotificationService {
 
             Message.creator(new PhoneNumber(notification.channel()),
                             new PhoneNumber(twilioAccountPhoneNumber),
-                            notification.message()
-                                    + " : is your ComfiHealth verification code."
-                                    + " This code will expire in 15 min"
+                            " : COMFI HEALTH verification code: \n"
+                                    + " CH-" + notification.message()
                     )
                     .create();
 

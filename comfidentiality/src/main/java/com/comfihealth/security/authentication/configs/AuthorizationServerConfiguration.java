@@ -78,7 +78,7 @@ public class AuthorizationServerConfiguration {
                 .clientId("client")
                 .clientSecret(clientEncodedSecret)
                 .redirectUris(uris -> uris.addAll(
-                        List.of("http://dev.local/authorized", "http://dev.local")
+                        List.of("http://127.0.0.1:8080/oauth/callback", "http://127.0.0.1:8080")
                 ))
                 .authorizationGrantTypes(grantTypes -> grantTypes.addAll(
                         List.of(AuthorizationGrantType.AUTHORIZATION_CODE,

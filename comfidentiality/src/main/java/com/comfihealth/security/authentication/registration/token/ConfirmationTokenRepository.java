@@ -11,11 +11,14 @@ import java.util.Optional;
 @Repository
 public interface ConfirmationTokenRepository extends JpaRepository<ConfirmationToken, Long> {
 
-    @Query("select c from confirmation_tokens c where c.username = ?1 and c.token = ?2 and c.confirmed = false")
-    Optional<ConfirmationToken> findUserConfirmationToken(String username, String token);
+    @Query("select c from confirmation_tokens c where c.destination = ?1 and c.token = ?2 and c.confirmed = false")
+    Optional<ConfirmationToken> findUserConfirmationToken(String destination, String token);
 
     @Transactional
     @Modifying
-    @Query("update confirmation_tokens c set c.confirmed = true where c.username = ?1 and c.token = ?2")
-    void confirmUserToken(String username, String token);
+    @Query("update confirmation_tokens c set c.confirmed = true where c.destination = ?1 and c.token = ?2")
+    void confirmUserToken(String destination, String token);
+
+    @Query("delete from users u where u.accountLocked = true")
+    void deleteAllByUsername(String username);
 }

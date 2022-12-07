@@ -1,0 +1,470 @@
+@import "variables.css";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline-width: 0;
+}
+
+.sr-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.main-descriptcard {
+    max-width: 360px;
+    align-self: center;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.main-descriptcard>.title {
+    margin: 0;
+    color: var(--color-primary);
+    letter-spacing: 0.02em;
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.main-descriptcard>.description {
+    font-size: 16px;
+    color: var(--color-dark);
+    font-weight: normal;
+    margin-top: 35px;
+    line-height: 30px;
+}
+
+.main-descriptcard>.join-btn-group {
+    margin-top: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.actbtn {
+    font-weight: 900;
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.actbtn-outline {
+    font-weight: 900;
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-light);
+    color: var(--color-primary);
+    border-radius: 5px;
+}
+
+.service-request-btn {
+    border: 0.001em solid !important;
+    border-radius: 0;
+}
+
+.main-descriptcard>.join-btn-group>.actbtn,
+.main-descriptcard>.join-btn-group>.actbtn-outline {
+    font-weight: 900;
+    width: 250px;
+    height: 40px;
+}
+
+.main-descriptcard>.join-btn-group>.actbtn-login {
+    margin-top: 30px;
+    border: none;
+    background-color: var(--color-tertiary) !important;
+    box-shadow: 0 3px 6px #00000029;
+    font-weight: 900;
+}
+
+.center-row-content {
+    display: flex;
+    justify-content: center;
+}
+
+.welcome-image-row {
+    margin-top: 61.5px;
+}
+
+.welcome-image-container {
+    width: 100%;
+}
+
+.sub-title {
+    width: 80%;
+    text-align: center;
+    color: var(--color-primary);
+    font-size: 18px;
+    font-weight: 900;
+    padding-bottom: 7px;
+    border-bottom: 0.01em solid var(--color-primary-shade);
+}
+
+.sub-title-no-underline {
+    color: var(--color-primary);
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.our-pride-row {
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.our-pride-row>.sub-title {
+    align-self: center;
+}
+
+.our-pride-details {
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0px;
+    margin: 0px 20px;
+    background: var(--color-light) 0% 0% no-repeat padding-box;
+    box-shadow: 0 3px 6px #00000029;
+    border-radius: 5px;
+}
+
+.our-pride-details__guide-text {
+    font-size: 16px;
+    text-align: center;
+    color: grey;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.our-pride-details-content {
+    width: inherit;
+    display: flex;
+    justify-content: space-around;
+}
+
+.our-pride-details-content-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.our-pride-details-content-col>span {
+    text-align: center;
+    font-size: 14px;
+    color: gray;
+}
+
+.our-pride-details-content-col>div {
+    height: 50px;
+    margin-top: 21px;
+    min-width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 3px 6px #00000029;
+    border: 1px solid var(--color-light);
+    color: var(--color-primary);
+    font-size: 14px;
+}
+
+.our-pride-details-content:nth-of-type(2) {
+    margin-top: 20px;
+}
+
+.our-partners-row {
+    margin-top: 30px;
+}
+
+.welcome-footer {
+    color: var(--color-light);
+    background-color: var(--color-primary);
+    padding: 20px;
+    text-align: left;
+}
+
+.welcome-footer-row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.welcome-footer-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome-footer-col>.footer-link {
+    font-size: 11px;
+    margin-bottom: 30px;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.form-group-h {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-label {
+    color: var(--color-primary);
+    font-weight: 900;
+}
+
+.form-label-hidden {
+    display: none;
+}
+
+.form-input {
+    border: 1px solid var(--color-primary);
+    /*border-radius: 7px;*/
+    background-color: var(--color-light);
+}
+
+.form-input-2 {
+    text-align: center;
+    border: none;
+    background-color: var(--color-secondary);
+    color: var(--color-dark);
+    font-weight: 900;
+}
+
+.form-input-3 {
+    border: none;
+    background-color: var(--color-light);
+    color: var(--color-primary);
+    padding: 10px 10px;
+}
+
+.active-bottom-menu {
+    background-color: rgb(98, 27, 58) !important;
+    border-bottom: 3px solid var(--color-light);
+}
+
+.menu-tab-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: var(--color-light);
+}
+
+.tab-link-text {
+    font-size: 10px;
+}
+
+.tab-link-text-active {
+    font-weight: 900;
+}
+
+.tab-link-icon {
+    color: var(--color-light);
+}
+
+
+/** Typography **/
+
+.cp-text-primary {
+    color: var(--color-primary);
+}
+
+.cp-text-danger {
+    color: var(--color-danger);
+}
+
+.cp-text-validated {
+    color: var(--color-validated);
+}
+
+.cp-text-pink {
+    color: var(--color-pink);
+}
+
+/* Styles for app header */
+/* Typography */
+
+.text-light {
+    color: var(--color-light);
+}
+
+.text-primary {
+    color: var(--color-primary);
+}
+
+/* --- END Typography --- */
+.header__title {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.header-left {
+    font-weight: 900;
+    margin-left: 10px;
+}
+
+.app-header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.header-btn {
+    width: 70px;
+    height: 35px;
+    font-size: 12px;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-weight: 900;
+}
+
+.join-video-room {
+    color: var(--color-light);
+    background-color: var(--color-primary);
+}
+
+.next-steps {
+    color: var(--color-dark);
+    background-color: var(--color-light);
+}
+
+/* End app header style */
+
+/** App layout customizations */
+.cp-box-shadow {
+    box-shadow: 0 3px 6px #00000029 !important;
+}
+
+.cp-border-radius {
+    border-radius: 5px !important;
+}
+
+/* Custom style of input checkbox */
+
+.checkbox-container {
+    /* The container of the input and the label */
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkbox-container input {
+    /* Hide the browser's default checkbox */
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    /* Create a custom checkbox */
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: var(--color-light);
+    border: 1px solid var(--color-primary);
+}
+
+.checkbox-container:hover input~.checkmark {
+    /* On mouse-over, add a grey background color */
+    background-color: var(--color-light);
+}
+
+.checkbox-container input:checked~.checkmark {
+    /* When the checkbox is checked, add a blue background */
+    background-color: var(--color-light);
+}
+
+.checkmark:after {
+    /* Create the checkmark/indicator (hidden when not checked) */
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked~.checkmark:after {
+    /* Show the checkmark when checked */
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    /* Style the checkmark/indicator */
+    left: 10px;
+    top: -2px;
+    width: 5px;
+    height: 15px;
+    border: solid var(--color-primary);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(60deg);
+    -ms-transform: rotate(60deg);
+    transform: rotate(60deg);
+}
+
+/* --- END --- */
+
+/** Style custom cp-square check box */
+
+.cp-square-checkbox {
+    height: 12px;
+    width: 12px;
+    border: 1px solid var(--color-primary);
+}
+
+/** End */
+
+/* Icons custom styles */
+
+.material-icons.sm-30 {
+    font-size: 30px;
+}
+
+.material-icons.sm-20 {
+    font-size: 20px;
+}
+
+.material-icons.sm-15 {
+    font-size: 15px;
+}
+
+.material-icons-outlined.sm-30 {
+    font-size: 30px;
+}
+
+.material-icons-outlined.sm-20 {
+    font-size: 20px;
+}
+
+.material-icons-outlined.sm-15 {
+    font-size: 15px;
+}
+
+/** --- END --- */

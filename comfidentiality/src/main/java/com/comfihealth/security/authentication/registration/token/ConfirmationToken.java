@@ -30,7 +30,7 @@ public class ConfirmationToken {
     private String token;
 
     @Column(nullable = false)
-    private String username;
+    private String destination;
 
     @Column(nullable = false)
     private boolean confirmed = false;
@@ -46,16 +46,14 @@ public class ConfirmationToken {
     private User user;
 
     public ConfirmationToken(String token,
-                             String username,
+                             String destination,
                              User user,
                              LocalDateTime createdAt,
                              LocalDateTime expiresAt
     ) {
         this.token = token;
         this.user = user;
-        //The reason for this is that we don't want to expose the user id to the client
-        //Note: It surely seems like duplicated data
-        this.username = username;
+        this.destination = destination;
         this.createdAt =  createdAt;
         this.expiresAt = expiresAt;
     }

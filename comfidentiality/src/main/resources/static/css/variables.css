@@ -1,0 +1,96 @@
+/* Ionic Variables and Theming. For more info, please see:
+http://ionicframework.com/docs/theming/ */
+
+@font-face {
+    font-family: Avenir;
+    src: url("/assets/fonts/AvenirLTStd-Roman.otf");
+}
+
+/** Ionic CSS Variables **/
+:root {
+    --font-family: Avenir;
+
+    /** primary **/
+    --color-primary: rgb(114, 32, 67);
+    --color-primary-rgb: 56, 128, 255;
+    --color-primary-contrast: #ffffff;
+    --color-primary-contrast-rgb: 255, 255, 255;
+    --color-primary-shade: #6c143e;
+    --color-primary-tint: #882e59;
+
+    /** secondary **/
+    --color-secondary: #FAD0E4;
+    --color-secondary-rgb: 61, 194, 255;
+    --color-secondary-contrast: #ffffff;
+    --color-secondary-contrast-rgb: 255, 255, 255;
+    --color-secondary-shade: rgba(233, 94, 255, 0.75);
+    --color-secondary-tint: #50c8ff;
+
+    /** tertiary **/
+    --color-tertiary: #dcb8c978;
+    --color-tertiary-rgb: 82, 96, 255;
+    --color-tertiary-contrast: #ffffff;
+    --color-tertiary-contrast-rgb: 255, 255, 255;
+    --color-tertiary-shade: #4854e0;
+    --color-tertiary-tint: #6370ff;
+
+    /** success **/
+    --color-success: #7B1746;
+    --color-success-rgb: 45, 211, 111;
+    --color-success-contrast: #ffffff;
+    --color-success-contrast-rgb: 255, 255, 255;
+    --color-success-shade: #6c143e;
+    --color-success-tint: #882e59;
+
+    /** warning **/
+    --color-warning: #ffc409;
+    --color-warning-rgb: 255, 196, 9;
+    --color-warning-contrast: #000000;
+    --color-warning-contrast-rgb: 0, 0, 0;
+    --color-warning-shade: #e0ac08;
+    --color-warning-tint: #ffca22;
+
+    /** danger **/
+    --color-danger: #eb445a;
+    --color-danger-rgb: 235, 68, 90;
+    --color-danger-contrast: #ffffff;
+    --color-danger-contrast-rgb: 255, 255, 255;
+    --color-danger-shade: #cf3c4f;
+    --color-danger-tint: #ed576b;
+
+    /** dark **/
+    --color-dark: #000000;
+    --color-dark-rgb: 34, 36, 40;
+    --color-dark-contrast: #ffffff;
+    --color-dark-contrast-rgb: 255, 255, 255;
+    --color-dark-shade: #000000;
+    --color-dark-tint: #1a1a1a;
+
+    /** medium **/
+    --color-medium: #92949c;
+    --color-medium-rgb: 146, 148, 156;
+    --color-medium-contrast: #ffffff;
+    --color-medium-contrast-rgb: 255, 255, 255;
+    --color-medium-shade: #808289;
+    --color-medium-tint: #9d9fa6;
+
+    /** light **/
+    --color-light: #FFFFFF;
+    --color-light-rgb: 244, 245, 248;
+    --color-light-contrast: #000000;
+    --color-light-contrast-rgb: 0, 0, 0;
+    --color-light-shade: #e0e0e0;
+    --color-light-tint: #ffffff;
+
+    /** validation **/
+    --color-validated: #0C640F;
+
+    /** muted **/
+    --color-muted: #f4f4f4;
+    --color-muted-secondary: #BEBEBE;
+
+    /** Custom **/
+    --color-pink: #330241;
+
+    --color-active-bottom-menu: #3D0C23FF;
+}

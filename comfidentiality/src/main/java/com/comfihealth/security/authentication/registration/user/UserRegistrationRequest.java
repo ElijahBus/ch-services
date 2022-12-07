@@ -19,11 +19,14 @@ public class UserRegistrationRequest {
 
     @NotEmpty
     @NotNull
-    @Email
-    private String email;
+    private String username;
 
     @NotEmpty
     @NotNull
+    @Email
+    private String email;
+
+    @Null
     @Length(min = 8)
     private String password;
 
@@ -39,8 +42,7 @@ public class UserRegistrationRequest {
     @NotNull
     private String sex;
 
-    @NotEmpty
-    @NotNull
+    @Null
     private String phoneNumber;
 
     @NotEmpty

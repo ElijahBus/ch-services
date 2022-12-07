@@ -1,0 +1,116 @@
+@import "main.css";
+
+/*
+NOTE:
+CONSIDER MINIFYING THE STYLES AND HOSTING THEM ON A CDN SERVER
+*/
+.page-header {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.error-display {
+    padding: 10px;
+    margin-top: 10px;
+    border: 0.01em solid var(--color-danger-shade);
+    border-radius: 5px;
+    background-color: var(--color-muted);
+    color: var(--color-danger-shade);
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*margin: 70px 20px 0 20px;*/
+    max-width: 450px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 100px;
+    padding: 10px;
+}
+
+.login-form-wrapper {
+    padding: 0 14px;
+    width: 100%;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    margin-top: 10px;
+}
+
+.login-form {
+    height: 281px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.login-form-label {
+    margin-bottom: 13px;
+    font-size: 14px;
+}
+
+.login-country-code_select {
+    height: 45px;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.login-form-input {
+    height: 45px !important;
+    padding: 17px;
+    border: 1px solid var(--color-primary);
+    border-radius: 5px;
+    flex: 1;
+}
+
+.toggle-keep-loggedin {
+    width: 100%;
+    margin-top: 40px;
+    padding-left: 20px;
+}
+
+.login-btn-wrapper {
+    margin-top: 40px;
+}
+
+.login-btn-wrapper > .action-btn {
+    height: 45px;
+    width: 167px;
+    border: none;
+    border-radius: 5px;
+    background: var(--color-primary);
+    color: var(--color-light);
+}
+.login-btn-wrapper > .action-btn .material-icons {
+    margin-left: 10px;
+}
+
+.password-forgotten-link-wrapper {
+    margin-top: 40px;
+}
+.password-forgotten-link-wrapper .forgot-password-link {
+    color: cornflowerblue;
+    font-size: 14px;
+}
+
+.create-account-link_container a {
+    margin: 40px 0;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-primary);
+}

@@ -1,6 +1,5 @@
 package com.comfihealth.security.authentication.registration.user;
 
-import com.comfihealth.security.authentication.registration.token.ConfirmationTokenRequest;
 import com.comfihealth.security.authentication.user.User;
 import com.comfihealth.security.authentication.user.UserAuthenticationService;
 import lombok.RequiredArgsConstructor;
@@ -12,32 +11,30 @@ public class UserRegistrationService {
 
     private final UserAuthenticationService userAuthenticationService;
 
-    public String register(UserRegistrationRequest request) {
-
-        var userToken = getRegistrationToken(request);
-
-        // Implement phone number of email validation
-
-        return userToken;
+    public String register(User user) {
+        return userAuthenticationService.register(user);
     }
 
-    private String getRegistrationToken(UserRegistrationRequest request) {
+    public void confirmToken(String username, String token) {
+        userAuthenticationService.validateUserRegistration(username, token);
+    }
 
+    public String requestRegistrationToken(String username) {
         return userAuthenticationService.signUp(new User(
-                request.getPhoneNumber(),
-                request.getPassword(),
-                request.getFirstName(),
-                request.getLastName(),
-                request.getSex(),
-                request.getEmail(),
-                request.getPhoneNumber(),
-                request.getCountry(),
-                request.getCity(),
-                request.getAddress()
+                username,
+                "N/A",
+                "N/A",
+                "N/A",
+                "N/A",
+                "N/A",
+                username,
+                "N/A",
+                "N/A",
+                "N/A"
         ));
     }
 
-    public void confirmToken(ConfirmationTokenRequest request) {
-        userAuthenticationService.validateUserRegistration(request);
+    public void updateUserPassword(String username, String password) {
+        userAuthenticationService.updateUserPassword(username, password);
     }
 }
