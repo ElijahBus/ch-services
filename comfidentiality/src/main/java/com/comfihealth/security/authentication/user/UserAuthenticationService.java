@@ -36,10 +36,15 @@ public class UserAuthenticationService {
 
     public String signUp(User user) {
 
-        var userExists = userRepository.findUserByUsername(user.getUsername()).isPresent();
-        if (userExists) {
-            //TODO: check whether the user exists but has not yet confirmed the email or phone
-            throw new IllegalStateException("The user already exists");
+        var userExists = userRepository.findUserByUsername(user.getUsername());
+        if (userExists.isPresent()) {
+            if (userExists.get().getPhoneNumberVerifiedAt() == null) {
+                throw new IllegalStateException("Redirect user to the phone verification page");
+            }
+
+            if (userExists.get().getPassword().isEmpty()) {
+                throw new IllegalStateException("Redirect user to the details page, with preloaded info");
+            }
         }
 
         userRepository.save(user);

@@ -34,7 +34,7 @@ public class UserRegistrationService {
         ));
     }
 
-    public void updateUserPassword(String username, String password) {
+    public void createUserPassword(String username, String password) {
         userAuthenticationService.updateUserPassword(username, password);
     }
 }

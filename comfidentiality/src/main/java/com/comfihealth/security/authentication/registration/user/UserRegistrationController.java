@@ -43,10 +43,12 @@ public class UserRegistrationController {
         return response;
     }
 
-    @PostMapping("/update-user-password")
-    public String updatePassword(@Valid @RequestBody UpdatePasswordRequest request) {
+    @PostMapping("/create-user-password")
+    public String createUserPassword(@Valid @RequestBody UpdatePasswordRequest request) {
+        //TODO: This process should be checked / validated upon a registration session
+        // and token validating that the request is coming from a valid source
         userRegistrationService
-                .updateUserPassword(request.getUsername(), request.getPassword());
+                .createUserPassword(request.getUsername(), request.getPassword());
 
         return "Password updated";
     }
