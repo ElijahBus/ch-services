@@ -2,12 +2,12 @@ package com.comfihealth.notification;
 
 import lombok.*;
 
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GenerationType;
-import javax.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.GeneratedValue;
 import java.time.LocalDateTime;
 
 @Entity(name = "notifications")

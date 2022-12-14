@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.*;
+import jakarta.validation.constraints.*;
 
 /**
  * Represents the user DTO, used to validate data

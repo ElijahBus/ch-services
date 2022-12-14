@@ -5,7 +5,7 @@ import com.comfihealth.security.authentication.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 @RestController
 @CrossOrigin("*")

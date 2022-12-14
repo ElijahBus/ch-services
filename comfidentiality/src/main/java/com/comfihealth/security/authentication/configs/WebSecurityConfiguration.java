@@ -20,9 +20,9 @@ public class WebSecurityConfiguration {
                 .csrf().disable()
                 .cors()
                 .and()
-                .authorizeRequests(requests -> requests
-                        .mvcMatchers("/api/v*/registration/**").permitAll()
-                        .mvcMatchers("/css/**", "/js/**", "/assets/**").permitAll()
+                .authorizeHttpRequests(requests -> requests
+                        .requestMatchers("/api/v*/registration/**").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/assets/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

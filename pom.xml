@@ -11,7 +11,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.5</version>
+		<version>3.0.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.comfihealth</groupId>
@@ -27,7 +27,7 @@
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
 		<spring.boot.maven.plugin.version>2.7.5</spring.boot.maven.plugin.version>
-		<spring.boot.dependencies.version>2.7.5</spring.boot.dependencies.version>
+		<spring.boot.dependencies.version>3.0.0</spring.boot.dependencies.version>
 	</properties>
 
 	<dependencyManagement>

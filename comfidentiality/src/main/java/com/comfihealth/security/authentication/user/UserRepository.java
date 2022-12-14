@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
