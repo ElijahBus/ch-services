@@ -1,13 +1,11 @@
 server:
-  port: 8001
+  port: 8002
 
 spring:
-  config:
-    import: private.yml
   datasource:
-    password: root
-    url: jdbc:postgresql://localhost:5432/ch_notification_service
+    url: jdbc:postgresql://localhost:5432/ch_clinical_service
     username: postgres
+    password: root
   jpa:
     hibernate:
       ddl-auto: update
@@ -16,13 +14,11 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
     show-sql: true
-  rabbitmq:
-    addresses: localhost:5672
 
 rabbitmq:
   exchanges:
-    sms: sms-exchange
+    clinical-service: clinical-service-exchange
   queues:
-    sms: sms.queue
+    clinical-service: clinical.service.queue
   routing-keys:
-    sms-notification: sms.notification.routing-key
+    clinical-service-notification: clinical.service.notification.routing-key

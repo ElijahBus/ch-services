@@ -24,6 +24,12 @@ public class UserAuthenticationService {
     @Value("${rabbitmq.routing-keys.sms-notification}")
     private String smsNotificationRoutingKey;
 
+    @Value("${rabbitmq.exchanges.clinical-service}")
+    private String clinicalServiceNotificationExchange;
+
+    @Value("${rabbitmq.routing-keys.clinical-service-notification}")
+    private String clinicalServiceNotificationRoutingKey;
+
     private final UserRepository userRepository;
 
     private final ConfirmationTokenService confirmationTokenService;
@@ -61,26 +67,6 @@ public class UserAuthenticationService {
         return signUpToken;
     }
 
-    private void saveConfirmationToken(User user, String token) {
-        var confirmationToken = new ConfirmationToken(
-                token,
-                user.getUsername(),
-                user,
-                LocalDateTime.now(),
-                LocalDateTime.now().plusMinutes(TOKEN_LIFETIME_MINUTES)
-        );
-
-        confirmationTokenService.saveToken(confirmationToken);
-    }
-
-    private void sendConfirmationToken(ConfirmationTokenNotification notification) {
-        rabbitMQMessageProducer.publish(
-                notification,
-                smsNotificationExchange,
-                smsNotificationRoutingKey
-        );
-    }
-
     public void validateUserRegistration(String username, String token) {
         var isValidToken = confirmationTokenService.isValidToken(username, token);
 
@@ -92,6 +78,8 @@ public class UserAuthenticationService {
         userRepository.setUserPhoneNumberVerified(username, LocalDateTime.now());
 
         confirmationTokenService.confirmToken(username, token);
+
+        sendNewAppUserRegisteredNotification(new NewAppUserRegisteredNotification(username));
     }
 
     public String register(User user) {
@@ -123,4 +111,34 @@ public class UserAuthenticationService {
 
         userRepository.save(user);
     }
+
+
+    private void saveConfirmationToken(User user, String token) {
+        var confirmationToken = new ConfirmationToken(
+                token,
+                user.getUsername(),
+                user,
+                LocalDateTime.now(),
+                LocalDateTime.now().plusMinutes(TOKEN_LIFETIME_MINUTES)
+        );
+
+        confirmationTokenService.saveToken(confirmationToken);
+    }
+
+    private void sendConfirmationToken(ConfirmationTokenNotification notification) {
+        rabbitMQMessageProducer.publish(
+                notification,
+                smsNotificationExchange,
+                smsNotificationRoutingKey
+        );
+    }
+
+    private void sendNewAppUserRegisteredNotification(NewAppUserRegisteredNotification notification) {
+        rabbitMQMessageProducer.publish(
+                notification,
+                clinicalServiceNotificationExchange,
+                clinicalServiceNotificationRoutingKey
+        );
+    }
+
 }

@@ -18,7 +18,7 @@ spring:
   datasource:
     password: root
     url: jdbc:postgresql://localhost:5432/ch_comfi_dentiality_manager
-    username: root
+    username: postgres
   jpa:
     hibernate:
       ddl-auto: update
@@ -38,5 +38,7 @@ comfihealth:
 rabbitmq:
   exchanges:
     sms: sms-exchange
+    clinical-service: clinical-service-exchange
   routing-keys:
     sms-notification: sms.notification.routing-key
+    clinical-service-notification: clinical.service.notification.routing-key
