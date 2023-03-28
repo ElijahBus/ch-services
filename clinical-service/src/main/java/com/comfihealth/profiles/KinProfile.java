@@ -1,5 +1,7 @@
 package com.comfihealth.profiles;
 
+import com.comfihealth.healthrecords.growthmetric.GrowthMetric;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -44,6 +46,10 @@ public class KinProfile {
 
     @Column(nullable = false)
     private char sex;
+
+    @OneToOne(mappedBy = "kinProfile")
+    @JsonIgnore
+    private GrowthMetric growthMetric;
 
     //TODO: Add timestamps fields with JPA magics
 

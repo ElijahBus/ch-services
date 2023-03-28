@@ -1,8 +1,6 @@
 package com.comfihealth.healthrecords.growthmetric;
 
-import com.comfihealth.healthrecords.growthmetric.serializables.HeadCircumference;
-import com.comfihealth.healthrecords.growthmetric.serializables.Height;
-import com.comfihealth.healthrecords.growthmetric.serializables.Weight;
+import com.comfihealth.healthrecords.growthmetric.serializables.*;
 import com.comfihealth.profiles.KinProfile;
 import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
@@ -12,6 +10,7 @@ import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "growth_metrics")
@@ -21,18 +20,11 @@ import java.time.LocalDateTime;
 public class GrowthMetric {
 
     @Id
-    @SequenceGenerator(
-            name = "growth_metrics_sequence",
-            sequenceName = "growth_metrics_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            generator = "growth_metrics_sequence",
-            strategy = GenerationType.SEQUENCE
-    )
     private Long id;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @MapsId
+    @JoinColumn(name = "id")
     private KinProfile kinProfile;
 
     @Type(JsonType.class)
@@ -49,16 +41,42 @@ public class GrowthMetric {
 
     private LocalDateTime createdAt; // yield this to jpa magic
 
-    public GrowthMetric(Height height,
-                        Weight weight,
-                        HeadCircumference hc,
-                        KinProfile kinProfile,
-                        LocalDateTime createdAt
+    public void setGrowthMetricValue(
+            GrowthMetricValueIdentifier identifier,
+            List<GrowthMetricAttributes> growthMetricData,
+            LocalDateTime updatedAtTime
     ) {
-        this.height = height;
-        this.weight = weight;
-        this.headCircumference = hc;
-        this.kinProfile = kinProfile;
-        this.createdAt = createdAt;
+        switch (identifier) {
+            case HEIGHT -> {
+                this.height = new Height().setLastUpdatedAt(updatedAtTime).setHistory(growthMetricData);
+            }
+            case WEIGHT -> {
+                this.weight = new Weight().setLastUpdatedAt(updatedAtTime).setHistory(growthMetricData);
+            }
+            case HEAD_CIRCUMFERENCE -> {
+                this.headCircumference = new HeadCircumference().setLastUpdatedAt(updatedAtTime).setHistory(growthMetricData);
+            }
+            default -> {
+                throw new IllegalStateException("Unrecognized metric value specified");
+            }
+        }
+    }
+
+    public GrowthMetricBaseValue getGrowthMetricValueInstance(GrowthMetricValueIdentifier identifier) {
+
+        switch (identifier) {
+            case HEIGHT -> {
+                return this.getHeight() != null ? this.getHeight() : new Height();
+            }
+            case WEIGHT -> {
+                return this.getWeight() != null ? this.getWeight() : new Weight();
+            }
+            case HEAD_CIRCUMFERENCE -> {
+                return this.getHeadCircumference() != null ? this.getHeadCircumference() : new HeadCircumference();
+            }
+            default -> {
+                throw new IllegalStateException("Unrecognized metric value specified"); //todo: implement custom exception here
+            }
+        }
     }
 }

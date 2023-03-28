@@ -1,15 +1,19 @@
 package com.comfihealth.healthrecords.growthmetric.serializables;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import java.time.LocalDateTime;
+import java.util.List;
 
-import java.io.Serializable;
 
-@Getter
-@Setter
-@AllArgsConstructor
-public class Weight implements Serializable {
-    private String date;
-    private String value;
+public class Weight extends GrowthMetricBaseValue {
+    @Override
+    public Weight setLastUpdatedAt(LocalDateTime dateTime) {
+        this.lastUpdatedAt = dateTime;
+        return this;
+    }
+
+    @Override
+    public Weight setHistory(List<GrowthMetricAttributes> history) {
+        this.history = history;
+        return this;
+    }
 }

@@ -1,8 +1,15 @@
 package com.comfihealth.healthrecords.growthmetric;
 
-public record GrowthMetricRequest(
-        String date,
-        String value,
-        Long kinProfileId
-) {
+import com.comfihealth.healthrecords.growthmetric.serializables.GrowthMetricValueIdentifier;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
+public class  GrowthMetricRequest {
+    private GrowthMetricValueIdentifier metric;
+
+    private String value;
+
+    private Long kinProfileId;
 }

@@ -10,6 +10,7 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 public class GrowthMetricAttributes implements Serializable {
-    private String name;
+    private String date;
     private String value;
 }
+

@@ -1,10 +1,11 @@
 package com.comfihealth.profiles;
 
+import com.comfihealth.healthrecords.growthmetric.serializables.GrowthMetricBaseValue;
+import com.comfihealth.healthrecords.growthmetric.serializables.GrowthMetricValueIdentifier;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Optional;
 
 
 @Service
@@ -49,5 +50,16 @@ public class KinProfileService {
         );
 
         return savedKinProfile;
+    }
+
+    public Optional<KinProfile> getKinProfile(Long id) {
+        return kinProfileRepository.findById(id);
+    }
+
+    public GrowthMetricBaseValue getKinProfileGrowthMetric(Long kinProfileId, GrowthMetricValueIdentifier metric) {
+        return kinProfileRepository.findById(kinProfileId)
+                .orElseThrow() //todo: throw a custom 404 exception
+                .getGrowthMetric()
+                .getGrowthMetricValueInstance(metric);
     }
 }
