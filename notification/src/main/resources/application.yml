@@ -6,10 +6,12 @@ spring:
     import: private.yml
   datasource:
     password: root
+    # TODO: Credentials should be kept private
     url: jdbc:postgresql://localhost:5432/ch_notification_service
     username: postgres
   jpa:
     hibernate:
+      # TODO: Should consider migration mechanism (very important)
       ddl-auto: update
     properties:
       hibernate:

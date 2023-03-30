@@ -33,4 +33,3 @@ build/
 .vscode/
 
 # Custom privte configs
-/notification/src/main/resources/private.yml

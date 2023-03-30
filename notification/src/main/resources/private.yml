@@ -1,0 +1,7 @@
+#Twilio credentials
+
+comfihealth:
+  twilio:
+    account-sid: ACb73f8449a01baf09c2349d47fbfe0d91
+    auth-token: 6ea18e7e1806a9acb8923e0ec92b0606
+    sender-phone-number: +12407751732

@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/ch_clinical_service
-    username: postgres
+    username: postgres #TODO: Should be kept private
     password: root
   jpa:
     hibernate:

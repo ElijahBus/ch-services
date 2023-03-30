@@ -16,7 +16,7 @@ logging:
 
 spring:
   datasource:
-    password: root
+    password: root #TODO: Should be kept private
     url: jdbc:postgresql://localhost:5432/ch_comfi_dentiality_manager
     username: postgres
   jpa:
