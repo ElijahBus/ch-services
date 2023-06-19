@@ -39,6 +39,21 @@ public class AuthorizationServerConfiguration {
     @Value("${comfihealth.oauth2.issuer.uri}")
     private String oauthIssuerURI;
 
+    // ----
+    // We set these values in the properties for now, since we only have one client to register and to make it quick.
+    // This will change, and hence will adopt storing these values in a storage
+
+    @Value("${comfihealth.client.redirect-uri}")
+    private String clientRedirectURIs;
+
+    @Value("${comfihealth.client.id}")
+    private String clientId;
+
+    @Value("${comfihealth.client.secret}")
+    private String clientSecret;
+
+    // ---
+
     private final JWKManager jwkManager;
 
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -85,14 +100,12 @@ public class AuthorizationServerConfiguration {
 
     @Bean
     public RegisteredClientRepository registeredClientRepository() {
-        var clientEncodedSecret = bCryptPasswordEncoder.encode("cp-client-secret");
+        var clientEncodedSecret = bCryptPasswordEncoder.encode(clientSecret);
 
         RegisteredClient client = RegisteredClient.withId(UUID.randomUUID().toString())
-                .clientId("client")
+                .clientId(clientId)
                 .clientSecret(clientEncodedSecret)
-                .redirectUris(uris -> uris.addAll(
-                        List.of("http://127.0.0.1:8080/oauth/callback", "http://127.0.0.1:8080")
-                ))
+                .redirectUris(uris -> uris.add(clientRedirectURIs))
                 .authorizationGrantTypes(grantTypes -> grantTypes.addAll(
                         List.of(AuthorizationGrantType.AUTHORIZATION_CODE,
                                 AuthorizationGrantType.CLIENT_CREDENTIALS,
@@ -110,6 +123,7 @@ public class AuthorizationServerConfiguration {
                 )
                 .build();
 
+        // TODO: Should save clients in the data store before going prod
         return new InMemoryRegisteredClientRepository(client);
     }
 }

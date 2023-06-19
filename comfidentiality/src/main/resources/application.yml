@@ -34,6 +34,10 @@ comfihealth:
   oauth2:
     issuer:
       uri: http://auth-server:8000
+  client:
+    id: client
+    secret: cp-client-secret
+    redirect-uri: http://127.0.0.1:8080/oauth/callback
 
 rabbitmq:
   exchanges:
