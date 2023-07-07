@@ -26,7 +26,7 @@ public class SmsNotificationService {
         try {
             Twilio.init(twilioAccountSid, twilioAuthToken);
 
-            Message.creator(new PhoneNumber(notification.channel()),
+            Message.creator(new PhoneNumber("+" + notification.channel()),
                             new PhoneNumber(twilioAccountPhoneNumber),
                             " : COMFI HEALTH verification code: \n"
                                     + " CH-" + notification.message()
