@@ -20,7 +20,8 @@ public class MvcConfig implements WebMvcConfigurer {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/v1/oauth2/token").allowedOrigins("http://127.0.0.1:8080");
+                registry.addMapping("/v1/oauth2/token")
+                        .allowedOrigins("https://test.comfihealth.com");
             }
         };
     }
