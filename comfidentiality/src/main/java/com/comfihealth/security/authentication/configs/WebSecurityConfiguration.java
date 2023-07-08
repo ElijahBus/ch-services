@@ -18,8 +18,8 @@ public class WebSecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .cors()
-                .and()
+//                .cors()
+//                .and()
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/api/v*/registration/**").permitAll()
                         .requestMatchers("/css/**", "/js/**", "/assets/**").permitAll()
