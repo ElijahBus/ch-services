@@ -21,7 +21,7 @@ public class MvcConfig implements WebMvcConfigurer {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/v1/oauth2/token")
-                        .allowedOrigins("https://test.comfihealth.com");
+                        .allowedOrigins("https://comfihealth.com", "https://test.comfihealth.com");
             }
         };
     }
